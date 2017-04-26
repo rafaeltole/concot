@@ -1,0 +1,36 @@
+---------------------------------------------------------------------------------------
+----- Grails Comandos -----------------------------------------------------------------
+---------------------------------------------------------------------------------------
+----- criar aplicação
+--- grails create-app [nome]
+
+----- Git :: gera arquivo .gitignore
+--- grails integrate-with --git
+
+----- modo interativo
+--- grails
+
+--- run-app (inicia aplicação (no modo interativo))
+
+--- create-domain-class [nome] (criar classes de domínio)
+--- create-controller [nome] (criar controller)
+
+----- Instalação da aplicação
+war
+
+----- Configurações pré-instaladas
+--- Servidor de aplicações: Apache Tomcat
+--- Banco de Dados (SGDB): H2
+--- Configuração repositório grails
+
+----- Configuração do MySql
+create database concot;
+create user 'concot'@'localhost' identified by 'concot';
+grant all on concot.* to 'concot'@'localhost';
+
+----- Ambiente Grails 3.4.4
+jdk-1.7
+Groovy Version: 2.4.10
+
+Site para divulgação de financiamentos ou contratos não cumpridos em busca de investidor oportuno
+vendoantes
