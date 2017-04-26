@@ -28,6 +28,19 @@ create database concot;
 create user 'concot'@'localhost' identified by 'concot';
 grant all on concot.* to 'concot'@'localhost';
 
+---------------------------------------------------------------------------------------
+----- Grails Arquivos -----------------------------------------------------------------
+---------------------------------------------------------------------------------------
+	DataSource.groovy - configurações para acesso ao banco de dados
+		.enviroments
+			.execução:
+				run-app - development
+				test-app - test
+				war - production
+			ambiente específico, utilizar o parâmetro -Dgrails.env=[nome]
+			ao gerar o WAR - grails war -Dgrails.env=[nome]
+
+
 ----- Ambiente Grails 3.4.4
 jdk-1.7
 Groovy Version: 2.4.10
