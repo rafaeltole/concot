@@ -40,10 +40,16 @@ grant all on concot.* to 'concot'@'localhost';
 			ambiente específico, utilizar o parâmetro -Dgrails.env=[nome]
 			ao gerar o WAR - grails war -Dgrails.env=[nome]
 
+---------------------------------------------------------------------------------------
+----- MySQL Comandos ------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+-- exibe a estrutura de uma tabela
+show fields in [tabela]
+
+-- exibe quem criou os detalhes da tabela
+show create table [tabela]
+
 
 ----- Ambiente Grails 3.4.4
 jdk-1.7
 Groovy Version: 2.4.10
-
-Site para divulgação de financiamentos ou contratos não cumpridos em busca de investidor oportuno
-vendoantes
