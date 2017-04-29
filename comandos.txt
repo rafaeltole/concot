@@ -23,11 +23,6 @@ war
 --- Banco de Dados (SGDB): H2
 --- Configuração repositório grails
 
------ Configuração do MySql
-create database concot;
-create user 'concot'@'localhost' identified by 'concot';
-grant all on concot.* to 'concot'@'localhost';
-
 ---------------------------------------------------------------------------------------
 ----- Grails Arquivos -----------------------------------------------------------------
 ---------------------------------------------------------------------------------------
@@ -43,6 +38,20 @@ grant all on concot.* to 'concot'@'localhost';
 ---------------------------------------------------------------------------------------
 ----- MySQL Comandos ------------------------------------------------------------------
 ---------------------------------------------------------------------------------------
+-- Linux acesso linha de comando
+--- mysql --user=root --password
+
+----- Configuração do MySql
+create database concot_dev;
+create user 'concot'@'localhost' identified by 'concot';
+grant all on concot.* to 'concot'@'localhost';
+
+
+
+
+
+
+
 -- exibe a estrutura de uma tabela
 show fields in [tabela]
 

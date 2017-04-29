@@ -2,11 +2,11 @@ dataSource {
     pooled = true
     jmxExport = true
     driverClassName = "com.mysql.jdbc.Driver"
-    username = "root"
+    username = "concot"
     password = "123mudar"
 }
 hibernate {
-	dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
     cache.use_second_level_cache = true
     cache.use_query_cache = false
 }

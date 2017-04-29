@@ -1,0 +1,106 @@
+---------------------------------------------------------------------------------------
+----- 06-Capítulo - Buscas ------------------------------------------------------------
+---------------------------------------------------------------------------------------
+grails console
+	- modo interativo: console
+
+Finders Dinâmicos
+Get e read com as suas diferenças
+-- get : retorna um objeto gerenciado pelo Hibernate com detecção de sujeira. Se houver alguma alteração, ao finalizar a sessão o Hibernate persiste no banco
+-- read: retorna um objeto gerenciado pelo Hibernate sem a detecção de sujeira. Se houver alguma alteração, ao finalizar a sessão o Hibernate não persiste no banco.
+			Necessário a execução do método save()
+
+-- Quando usar: em consultas simples como no máxmo três atributos
+
+Expressões de Método (Method Expressions)
+-- prefixos inseridos nas consultas. Ex.: findBy[propriedade], findAllBy[propriedade]
+-- findOrSaveBy[propriedade]: busca um registro, caso não encontre, realiza o cadastro
+
+----------------------------------------------------------------------------------------------------------------------
+Criterias
+-- Quando usar: em consultas complexas ou cuja legibilidade seja comprometida quando escrita com: Finders, SQL ou HQL.
+Sintaxe:
+	def criteria = ClasseDeDominio.createCriteria()
+	criteria.get {
+		eq('atributo', 'valor') [ignoreCase:true] - desabilita case sensitive
+	}
+		ou
+	def lista = ClasseDeDominio.withCriteria() { -- retorna o resultado da consulta
+		eq('atributo', 'valor') [ignoreCase:true] - desabilita case sensitive
+	}
+
+-- Scrollable Resultas: criteria para bases com grande quantidade de registros
+	- cuidado ao utilizar junto ao driver do MySQL. Carrega todos os registros na memória
+
+-- Criterias em Tempo de Execução
+Permite a utilização de instruções/ condicionais groovy dentre de criterias
+
+-- Criterias desconectadas
+Reaproveitamento de consultas
+import grails.gorm.DetachedCriteria // obrigatório
+def criteria = new DetachedCriteria(Cotacao).build {
+	moeda {
+		eq 'nome', 'Real'
+	}
+	gt 'valor', 1000
+}
+
+-- Composição de criterias desconectadas
+Permite o reaproveitamento de Criterias Desconectadas
+def buscaCotacaoEmReais = new DetachedCriteria(Cotacao).build {
+	moeda {
+		eq 'nome', 'Real'
+	}
+}
+
+def cotacoesCaras = Cotacao.withCriteria {
+	buscaCotacaoEmReais //olha aqui a criteria desconectada :)
+	gt 'valor', 1000000
+}
+
+-- Processamento de registros em lote com Criterias Desconectadas
+Permite a Atualização ou Remoção de registro em lote, utilizando Criterias
+def criteriaCotacoes = new DetachedCriteria(Cotacao).build {
+	item {
+		categoria {
+			eq 'nome', 'Gratuito'
+		}
+	}
+}
+criteriaCotacoes.updateAll([valor:0])
+		ou
+criteriaCotacoes.deleteAll()
+
+----------------------------------------------------------------------------------------------------------------------
+Buscas por WHERE (Where Queries)
+-- Mesmo pode das Criterias porem com a sitaxe mais próxima do Groovy. Fornece uma alternativa mais flexível aos Finders Dinâmicos e menos
+	verbosa que as Criterias
+
+Cotacao.withCriteria {
+	gt 'valor', 1000
+	moeda {
+		eq 'nome', 'Real'
+	}
+}
+		COM WHERE
+Cotacao.findAll {
+	moeda.nome == 'Real' && valor > 1000
+}
+
+----------------------------------------------------------------------------------------------------------------------
+HQL (Hibernate Query Language)
+-- A opção mais flexível orientada a objetos oferecida pelo GORM 
+
+// Todas as categorias que tenham a letra A no nome
+Categoria.findAll("from Categoria c where c.nome like '%a%'")
+
+// A categoria cujo id é 1
+Categoria.find("from Categoria c where c.id = 1")
+
+-- Com parâmetros
+Categoria.findAll("from Categoria where id = ?", [1l]) -- parâmetros posicionais
+Categoria.findAll("from Categoria where id = :id", [id:1l]) -- parâmetros nomeados
+
+
+
+
