@@ -15,6 +15,10 @@
 --- create-domain-class [nome] (criar classes de domínio)
 --- create-controller [nome] (criar controller)
 
+--- Criando Scaffold
+grails generate-all [nome completo classe de domínio] (concot.Categoria)
+
+
 ----- Instalação da aplicação
 war
 

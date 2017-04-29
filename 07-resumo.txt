@@ -1,0 +1,8 @@
+---------------------------------------------------------------------------------------
+----- 07-Capítulo - A Camada Web: Controllers -----------------------------------------
+---------------------------------------------------------------------------------------
+grails console
+	- modo interativo: console
+
+Criando scaffold
+	- grails generate-all [nome completo classe de domínio] (concot.Categoria)
