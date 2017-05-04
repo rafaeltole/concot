@@ -11,14 +11,14 @@ Criando scaffold
 Scaffolding: Dinâmico x Estático
 	Estrutura inicial do projeto. Possui duas versões: 
 		Dinâmico, quando utilizados o atributo static em nossos controllers (static scaffold = ClasseDeDominio).
-			As páginas e todo o código ncessário são gerados de forma dinâmica em tempo de execução.
+			As páginas e todo o código necessário são gerados de forma dinâmica em tempo de execução.
 		Estático, quando utilizamos o comando: grails generate-all [pacote.ClasseDeDominio].O Grails gera toda estrutura necessária para um GRUD,
-			mantendo as o código e as views geradas para uma possível edição
+			mantendo o código e as views geradas para uma possível edição
 
 ---------------------------------------------------------------------------------------
 Entendendo controladores
 	Grails utiliza fortementa o conceito de convenção, portanto os Controllers são os códigos armazenados em: grails-app/controllers e deve possuir o sufixo Controller.
-	Os controllers possui funções responsáveis por lidar com requisições das views, a esses são denominados, Actions. Toda a função declarada como pública se torna 
+	Os controllers possuem funções responsáveis por lidar com requisições das views, a esses são denominados, Actions. Toda a função declarada como pública se torna 
 		uma Action.
 	Action Default
 	A execução das Actions de um Controller, seguem o seguinte conceito:
@@ -33,12 +33,35 @@ Dominando URLs
 		http://[contexto da aplicação]/[controller]/[action]/[parâmetros]
 	Se uma URL possui apenas um parâmetro não nomeado, por padrão ele recebe o nome de id e não precisa ser declarado.
 		Comportamento configurado no arquivo: grails-app/conf/UrlMappings.groovy
-	Para enviar de um parâmetro na URL o Grails controla, por meio do objeto params. Uma mapa que guarda todos os parâmetros enviados para nosso Action.
+	Para enviar um parâmetro na URL o Grails controla, por meio do objeto params. Uma mapa que guarda todos os parâmetros enviados para nossa Action.
 		Seja, por submissão de formulário, corpo HTTP ou URL. 
 
 ---------------------------------------------------------------------------------------
 Redirecionando Ações
-
+	Possui duas formas para redirecionar uma ação, por Controller ou URLs. Onde:
+	Para redirecionar uma requisição para outra Action utilize:
+		redirect(action:'[nomeDaAction]', controller:'[nomeDoController-Sem o Sufixo]', params:[[chave:valor]])
+	Para redirecionar uma requisição para outra URL:
+		redirect(url:'[url]')
 
 ---------------------------------------------------------------------------------------
 Renderizando a Resposta
+	Por padrão Grails retorna as views que estão no diretório com o mesmo nome do controller. Mas por algum motivo queira retornar uma view diferente:
+		render(view:'[nomeDaView]', model:[resultado]) -- para os casos em que a view esteja no mesmo diretório do controller
+		render(view:'/diretorio/nomeDaView', model:[resultado]) caso esteja em um diretório diferente, deverá ser informado
+	O Grails permite que renderizamos apenas trechos em: HTML, XML ou JSON
+		Utilizando Builder
+		Retornando o objeto (não aconselhavél)
+		Marshalling automático: render Categoria.list() as JSON | XML | HTMl
+	Negociação de conteúdo automático, por meio do Header Accept ou parâmetro format na URL
+
+---------------------------------------------------------------------------------------
+Data Binding
+
+
+			
+
+	
+
+
+
