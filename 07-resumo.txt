@@ -58,7 +58,14 @@ Renderizando a Resposta
 ---------------------------------------------------------------------------------------
 Data Binding
 
+	Ligação dos parâmetros fornecidos pelo HTTP as propriedades de um objeto
 
+---------------------------------------------------------------------------------------
+Command Objects
+	Objetos para validação de dados enviados ao controller
+
+---------------------------------------------------------------------------------------
+Escopo de Controladores
 			
 
 	
