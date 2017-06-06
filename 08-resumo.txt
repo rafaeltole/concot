@@ -1,0 +1,43 @@
+---------------------------------------------------------------------------------------
+----- 08-Capítulo - A Camada Web: Visualização ----------------------------------------
+---------------------------------------------------------------------------------------
+Debug GSP
+	- visualização do código fonte gerado. Adicione o parâmetro ?showSource=true ao final da URL
+
+---------------------------------------------------------------------------------------
+8.2 Tags customizadas
+- condicionais
+	- g:if
+	- parâmetro env para identificar o ambiente em execução
+- Iterações
+	- g:each | g:while
+- Definição de variáveis
+	- g:set var="" value="" scope=""
+- Links
+	- g:link controller="" action=""
+	- pode-se utilizar dois parâmetros ao construir os links
+		- id
+		- params
+	- g:createLink
+		- apenas para construir o link
+	- $resource (dir: '', file:'')
+		- para utilização de recursos estáticos		
+
+---------------------------------------------------------------------------------------
+8.4 Formulários
+- g:form
+- g:uploadForm	
+- Campos de entrada
+	- g:textField
+	- g:textArea
+	- g:textPassword
+	- g:select
+	- g:checkbox
+
+---------------------------------------------------------------------------------------
+8.5 Criando Tags customizadas
+Uma classe Groovy que segue algumas convenções.
+	- encontra-se em grails-app/taglib
+	- sufixo TagLib
+	- cada tag é representada por uma closure
+	- pode se utilizar o comando: create-tag-lib [nome]
