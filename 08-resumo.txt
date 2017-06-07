@@ -41,3 +41,24 @@ Uma classe Groovy que segue algumas convenções.
 	- sufixo TagLib
 	- cada tag é representada por uma closure
 	- pode se utilizar o comando: create-tag-lib [nome]
+
+---------------------------------------------------------------------------------------
+8.6 Templates
+	SiteMesh
+
+---------------------------------------------------------------------------------------
+8.8 Recursos estáticos
+	- Asset Pipeline
+	- Tags
+		- asset:images
+		- asset:javascript
+		- asset:stylesheet
+	- Assert Manifest. Diretivas
+		- //= require (javascript)		
+		- *= (css)
+
+---------------------------------------------------------------------------------------
+8.9 Ajax
+Suporte por meio de um conjunto de tags
+	- g:formRemote
+	- g:linkRemote
